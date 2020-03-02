@@ -14,10 +14,15 @@ const firebaseConfig = {
   authDomain: "kittengram-9e684.firebaseapp.com",
   databaseURL: "https://kittengram-9e684.firebaseio.com",
   projectId: "kittengram-9e684",
-  storageBucket: "kittengram-9e68 4.appspot.com",
+  storageBucket: "kittengram-9e684.appspot.com",
   messagingSenderId: "573249771518",
   appId: "1:573249771518:web:0c2f0f0af3beafeebe52af",
   measurementId: "G-SGK51F5HLX"
 };
 
 firebase.initializeApp(firebaseConfig);
+
+const storage = firebase.storage();
+const storageRef = storage.ref();
+
+export default storageRef

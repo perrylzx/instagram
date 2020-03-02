@@ -1,12 +1,14 @@
 import "./App.css";
 import React from "react";
+import SubmitPic from './component/SubmitPic'
 
 function App() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <SubmitPic/>
     </div>
   );
 }
+
 
 export default App;
