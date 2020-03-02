@@ -1,7 +1,6 @@
 import React from "react";
-import firebase from '../firebase'
 
-
+// This sends your photo to a test api that i made to experiment with input file and form sending req
 const SubmitPic = () => (
   <form action="http://localhost:4000/submit-photo" method="get">
     <div>
