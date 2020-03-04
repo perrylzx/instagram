@@ -1,1 +1,0 @@
-// TODO(Perry): write container component for submitpic component
