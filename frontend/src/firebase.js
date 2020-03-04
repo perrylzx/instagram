@@ -5,8 +5,8 @@ import * as firebase from "firebase/app";
 // TODO(PERRY): Import Firebase product that we want (cloud functions?)
 import "firebase/auth";
 import "firebase/firestore";
-import "firebase/storage";
 import "firebase/functions";
+import "firebase/storage";
 
 // TODO(PERRY): Put this secret in the firebase secret product
 const firebaseConfig = {
@@ -22,5 +22,4 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
-export default firebase
+export default firebase;
