@@ -1,14 +1,13 @@
-import "./App.css";
 import React from "react";
-import SubmitPic from './component/SubmitPic'
+import "./App.css";
+import SubmitPic from "./component/SubmitPic";
 
 function App() {
   return (
     <div>
-      <SubmitPic/>
+      <SubmitPic />
     </div>
   );
 }
-
 
 export default App;
