@@ -30,8 +30,7 @@ exports.fetchPosts = functions.https.onRequest((req, res) => {
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
-          const data = doc.data().url;
-          res.send(data);
+          res.send(doc.data().url);
         });
       })
       .catch(err => {
