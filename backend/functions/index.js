@@ -18,5 +18,36 @@ exports.createPost = functions.https.onRequest((req, res) => {
     let setTest = await imageRef.add({
       url: req.body.imageUrl
     });
+    res.send("succesfully ran funcion");
   });
 });
+
+let postsRef = db.collection("users/user/posts");
+// Create cloud function fetchPosts that fetchs the image url of all the posts
+exports.fetchPosts = functions.https.onRequest((req, res) => {
+  return cors(req, res, () => {
+    let allPosts = postsRef
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data().url;
+          res.send(data);
+        });
+      })
+      .catch(err => {
+        console.log("Error getting documents", err);
+      });
+  });
+});
+
+// let allPosts = postsRef
+//   .get()
+//   .then(snapshot => {
+//     snapshot.forEach(doc => {
+//       const data = doc.data().url;
+//       console.log(data);
+//     });
+//   })
+//   .catch(err => {
+//     console.log("Error getting documents", err);
+//   });
