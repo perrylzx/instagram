@@ -22,8 +22,9 @@ exports.createPost = functions.https.onRequest((req, res) => {
   });
 });
 
+// Currently, this function sends only sends one get request to the database, therefore only fetching the oldest image that was sent to the database
+// TODO(Perry): Find a way to query ALL image in postsRef.
 let postsRef = db.collection("users/user/posts");
-// Create cloud function fetchPosts that fetchs the image url of all the posts
 exports.fetchPosts = functions.https.onRequest((req, res) => {
   return cors(req, res, () => {
     let allPosts = postsRef
@@ -38,15 +39,3 @@ exports.fetchPosts = functions.https.onRequest((req, res) => {
       });
   });
 });
-
-// let allPosts = postsRef
-//   .get()
-//   .then(snapshot => {
-//     snapshot.forEach(doc => {
-//       const data = doc.data().url;
-//       console.log(data);
-//     });
-//   })
-//   .catch(err => {
-//     console.log("Error getting documents", err);
-//   });
