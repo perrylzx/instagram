@@ -7,10 +7,7 @@ admin.initializeApp(functions.config().firebase);
 const db = admin.firestore();
 
 // ref to the firestore where we want to store the image urls
-let imageRef = db
-  .collection("users")
-  .doc("user")
-  .collection("posts");
+let imageRef = db.collection("users/user/posts");
 
 // Create Cloud Function `createPost` takes the image url from the front end, which we then send to the firestore ref
 exports.createPost = functions.https.onRequest((req, res) => {
@@ -22,17 +19,18 @@ exports.createPost = functions.https.onRequest((req, res) => {
   });
 });
 
-// Currently, this function sends only sends one get request to the database, therefore only fetching the oldest image that was sent to the database
-// TODO(Perry): Find a way to query ALL image in postsRef.
+// This function fetches all the image urls from the database and then sends it back in an array
 let postsRef = db.collection("users/user/posts");
 exports.fetchPosts = functions.https.onRequest((req, res) => {
   return cors(req, res, () => {
     let allPosts = postsRef
       .get()
       .then(snapshot => {
+        const urlList = [];
         snapshot.forEach(doc => {
-          res.send(doc.data().url);
+          urlList.push(doc.data().url);
         });
+        res.send(urlList);
       })
       .catch(err => {
         console.log("Error getting documents", err);
