@@ -1,0 +1,12 @@
+.posts-container {
+  display: flex;
+  padding-top: 10px;
+  outline: solid red;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.posts-container img {
+  outline: blue solid;
+  width: 33%;
+}
