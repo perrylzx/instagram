@@ -11,7 +11,7 @@ const SubmitPic = () => {
   return (
     <div className="upload-container">
       <div>
-        <h1 className="upload-text">KITTYGRAM</h1>
+        <h1 className="upload-text">Instagram</h1>
       </div>
       <br />
       <div>
@@ -26,7 +26,7 @@ const SubmitPic = () => {
                 const imageUrl = await snapshot.ref.getDownloadURL();
                 console.log(`Uploaded ${file.name}`, "at", imageUrl);
                 fetch(
-                  "https://us-central1-kittengram-9e684.cloudfunctions.net/createPost",
+                  "http://localhost:5001/kittengram-9e684/us-central1/createPost",
                   {
                     method: "POST",
                     headers: {

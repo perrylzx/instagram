@@ -5,12 +5,12 @@ import "./FetchPosts.css";
 class FetchPosts extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { imageUrl: [] };
+    this.state = { imageUrls: [] };
   }
 
-  componentDidMount() {
-    fetch(
-      "https://us-central1-kittengram-9e684.cloudfunctions.net/fetchPosts",
+  async componentDidMount() {
+    await fetch(
+      "http://localhost:5001/kittengram-9e684/us-central1/fetchPosts",
       {
         method: "GET"
       }
@@ -19,20 +19,20 @@ class FetchPosts extends React.Component {
         return response.json();
       })
       .then(urlList => {
-        this.setState({ imageUrl: urlList });
+        this.setState({ imageUrls: urlList });
       });
-  }
 
-  // Currently, this just renders the first two images from the database
-  // TODO(Perry): Render ALL the images from the database
   render() {
-    return (
-      <div className="posts-container">
-        <img src={this.state.imageUrl[0]} alt="cat"></img>
-        <img src={this.state.imageUrl[1]} alt="cat"></img>
-      </div>
-    );
+    const postComponents = [];
+    this.state.imageUrls.forEach(imageUrl => {
+      postComponents.push(
+        <div id="posts">
+          <img src={imageUrl} alt="cat" />
+        </div>
+      );
+    });
+
+    return <div className="posts-container">{postComponents}</div>;
   }
 }
-
 export default FetchPosts;
