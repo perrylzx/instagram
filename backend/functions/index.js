@@ -23,6 +23,14 @@ exports.createPost = functions.https.onRequest((req, res) => {
 let postsRef = db.collection("users/user/posts");
 exports.fetchPosts = functions.https.onRequest((req, res) => {
   return cors(req, res, () => {
+    const idToken = req.headers.authorization;
+    admin
+      .auth()
+      .verifyIdToken(idToken)
+      .then(decodedToken => {
+        let uid = decodedToken.uid;
+        console.log(uid);
+      });
     let allPosts = postsRef
       .get()
       .then(snapshot => {
