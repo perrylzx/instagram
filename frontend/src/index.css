@@ -5,8 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./component/cat.jpg);
-  background-size: 100%;
+  background-color: #fafafa;
 }
 
 code {
