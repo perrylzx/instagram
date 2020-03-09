@@ -1,10 +1,12 @@
 import React from "react";
-import FetchPosts from "./component/FetchPosts";
+import Login from "./component/Login";
+import FetchPosts from "./component/PostList";
 import SubmitPic from "./component/SubmitPic";
 
 function App() {
   return (
     <div>
+      <Login />
       <SubmitPic />
       <FetchPosts />
     </div>
