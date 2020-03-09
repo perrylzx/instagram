@@ -1,0 +1,26 @@
+.posts-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10px;
+  outline: rgb(155, 155, 155) 1px solid;
+  flex-wrap: wrap;
+}
+
+.posts-container div {
+  display: flex;
+  justify-content: center;
+  width: 33%;
+  height: 200px;
+}
+
+.posts-container div img {
+  max-width: 100%;
+  display: block;
+  max-height: 100%;
+  margin: 10px;
+  width: 100%;
+}
