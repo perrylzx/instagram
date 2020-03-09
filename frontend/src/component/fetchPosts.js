@@ -10,7 +10,7 @@ class FetchPosts extends React.Component {
 
   async componentDidMount() {
     await fetch(
-      "http://localhost:5001/kittengram-9e684/us-central1/fetchPosts",
+      "https://us-central1-kittengram-9e684.cloudfunctions.net/fetchPosts",
       {
         method: "GET"
       }
@@ -20,7 +20,9 @@ class FetchPosts extends React.Component {
       })
       .then(urlList => {
         this.setState({ imageUrls: urlList });
+        console.log(this.state.imageUrls);
       });
+  }
 
   render() {
     const postComponents = [];
@@ -31,7 +33,6 @@ class FetchPosts extends React.Component {
         </div>
       );
     });
-
     return <div className="posts-container">{postComponents}</div>;
   }
 }
