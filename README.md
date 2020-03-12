@@ -1,1 +1,1 @@
-an instagram clone made with firebase and react and redux
+an instagram clone made with firebase and react
