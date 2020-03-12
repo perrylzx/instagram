@@ -1,6 +1,7 @@
 import React from "react";
 import firebase from "../firebase";
 import "./PostList.css";
+const db = firebase.firestore();
 
 // This component fetches the urls from the fetchPosts cloud functions, then sets it to the state, on component mount
 export default class PostList extends React.Component {
@@ -10,23 +11,13 @@ export default class PostList extends React.Component {
   }
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(async user => {
-      if (user) {
-        const idToken = await user.getIdToken(true);
-        fetch("http://localhost:5001/kittengram-9e684/us-central1/fetchPosts", {
-          method: "GET",
-          headers: {
-            Authorization: idToken
-          }
-        })
-          .then(response => {
-            return response.json();
-          })
-          .then(urlList => {
-            this.setState({ imageUrls: urlList });
-          });
-        //  make login button disappear after logged in
-      }
+    let postsRef = db.collection("users/user/posts");
+    postsRef.onSnapshot(QuerySnapshot => {
+      const urlList = [];
+      QuerySnapshot.forEach(doc => {
+        urlList.push(doc.data().url);
+      });
+      this.setState({ imageUrls: urlList });
     });
   }
 
