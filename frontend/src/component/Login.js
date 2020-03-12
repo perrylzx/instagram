@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import Button from "react-bootstrap/Button";
 import firebase from "../firebase";
+import "./Login.css";
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -12,16 +13,18 @@ const googleAuth = () => {
 class Login extends React.Component {
   render() {
     return (
-      <div>
-        <Button
-          variant="primary"
-          size="lg"
-          onClick={() => {
-            googleAuth();
-          }}
-        >
-          Login Here
-        </Button>
+      <div id="login-button-container">
+        <div>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={() => {
+              googleAuth();
+            }}
+          >
+            Login Here
+          </Button>
+        </div>
       </div>
     );
   }
