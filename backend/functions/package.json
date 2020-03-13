@@ -10,7 +10,7 @@
     "test": "mocha --reporter spec"
   },
   "engines": {
-    "node": "12"
+    "node": "8"
   },
   "dependencies": {
     "chai": "^4.2.0",
