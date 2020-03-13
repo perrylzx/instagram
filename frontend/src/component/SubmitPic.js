@@ -5,10 +5,17 @@ import "./SubmitPic.css";
 
 // TODO(Perry): Make this component look fancy with bootstrap
 class SubmitPic extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { idToken: "" };
+  }
   // TODO(Perry): update this component to do user verification
   componentDidMount() {
     firebase.auth().onAuthStateChanged(async user => {
       if (user) {
+        const userIdToken = await user.getIdToken(true);
+        console.log(`this is the id token from frontend ${userIdToken}`);
+        this.setState({ idToken: userIdToken });
       }
     });
   }
@@ -39,7 +46,8 @@ class SubmitPic extends React.Component {
                     {
                       method: "POST",
                       headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        Authorization: this.state.idToken
                       },
                       body: JSON.stringify({ imageUrl })
                     }
